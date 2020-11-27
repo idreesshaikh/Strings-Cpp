@@ -2,11 +2,9 @@
 
 using namespace HomeMadeString;
 
-//Default Contructor
 String::String() : elementNum(0), pData(NULL)
 {}
 
-// Copy constructor:
 String::String(const String &oldString)
 {
 	elementNum = oldString.elementNum;
@@ -19,8 +17,7 @@ String::String(const String &oldString)
 }
 
 
-// Conversion constructor that expects a char* with '\0' at the end
-// This constructor is responsible for the conversion char*-> String
+
 String::String(const char *str)
 {
 	//char null;
@@ -43,9 +40,6 @@ String::String(const char *str)
 }
 
 
-// Constructor with a char (c) and an int parameter (times)
-// This constructor creates a string that contains 'times' pieces of the character c
-// e.g. if c='$' and times=5 then String="$$$$$"
 String::String(const char c, int times)
 {
 	elementNum = times;
@@ -58,7 +52,6 @@ String::String(const char c, int times)
 }
 
 
-// Destructor:
 String::~String()
 {
 	elementNum = 0;
@@ -67,8 +60,6 @@ String::~String()
 }
 
 
-// Copies the string to the buffer and terminates it with '\0' (string terminating character)
-// Memory allocation for the buffer is to be done by a caller
 void String::getStr(char *pBuff)
 {
 	for (int i = 0; i < elementNum; i++)
@@ -79,14 +70,12 @@ void String::getStr(char *pBuff)
 }
 
 
-// Returns with the string length
 int String::getLength()
 {
 	return elementNum;
 }
 
 
-// Writes the string to the given stream
 void String::print(std::ostream &os)
 {
 	for (unsigned int i = 0; i < elementNum; i++)
@@ -96,7 +85,6 @@ void String::print(std::ostream &os)
 }
 
 
-// Returns with the character at the given position, othewise 0
 char String::getChar(int pos)
 {
 	if (pos < 0 || pos >= elementNum)
@@ -104,11 +92,7 @@ char String::getChar(int pos)
 	return pData[pos];
 }
 
-// --- Static Class Members. They work with two strings passed as parameters. ---
 
-
-
-// Returns with a concatenated string
 String String::concatenate(const String &string1, const String &string2)
 {
 	int length = string1.elementNum + string2.elementNum;
@@ -131,8 +115,6 @@ String String::concatenate(const String &string1, const String &string2)
 }
 
 
-
-// Compares two strings
 bool String::compare(const String &string1, String string2)
 {
 	if (string1.elementNum == string2.elementNum)
@@ -152,8 +134,6 @@ bool String::compare(const String &string1, String string2)
 }
 
 
-
-// Copies string2 to string1
 void String::copy(String &string1, const String &string2)
 {
 	int size = string2.elementNum;
